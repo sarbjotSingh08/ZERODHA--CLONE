@@ -1,9 +1,19 @@
 import React from "react";
-import {positions} from '../data/data'
+// import {positions} from '../data/data'
+import axios from 'axios';
+import { useState,useEffect} from "react";
 const Positions = () => {
+  const [data,setData]=useState([]);
+  useEffect(()=>{
+    axios.get("http://localhost:3001/allpositions").then((res)=>{
+      setData(res.data);
+    }).catch((error)=>{
+      console.log(error.message)
+    })
+  },[])
   return (
     <>
-      <h3 className="title">Positions (2)</h3>
+      <h3 className="title">Positions ({data.length})</h3>
 
       <div className="order-table">
         <table>
@@ -16,13 +26,13 @@ const Positions = () => {
             <th>P&L</th>
             <th>Chg.</th>
           </tr>
-          {positions.map((stock,index)=>{
+          {data.map((stock,index)=>{
                      const currValue= stock.price*stock.qty;
                      const isProfit=currValue-stock.avg*stock.qty>=0.0;
                      const profClass = isProfit ? "profit":"loss";
                      const dayClass = stock.isLoss?"loss":"profit";
           return (
-            <tr key={index}>
+            <tr key={stock._id}>
           <td>{stock.product}</td>
           <td>{stock.name}</td>
           <td>{stock.qty}</td>

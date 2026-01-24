@@ -5,6 +5,11 @@ const app=express();
 const mongoose=require("mongoose");
 const {HoldingsModel}=require("./model/HoldingsModel.js");
 const {PositionsModel}=require("./model/PositionsModel.js");
+const {OrdersModel}=require("./model/OrdersModel.js")
+const bodyParser = require("body-parser");
+const cors=require("cors");
+app.use(cors());
+app.use(bodyParser.json());
 
 app.get("/addHoldings",async (req,res)=>{
  let tempHoldings=[
@@ -165,6 +170,28 @@ await PositionsModel.insertMany(tempPositions);
 res.send("done!")
 })
 
+app.get("/allholdings",async (req,res)=>{
+  const holdings=await HoldingsModel.find({});
+  res.json(holdings);
+})
+
+app.get("/allpositions",async (req,res)=>{
+  const positions= await PositionsModel.find({});
+  res.json(positions);
+})
+
+
+// new order 
+app.post("/neworder",async (req,res)=>{
+  const  orders=new OrdersModel({
+     name:req.body.name,
+    qty:req.body.qty,
+    price:req.body.price,
+    mode:req.body.mode
+  })
+  await orders.save();
+  res.send("order saved");
+})
 const MONGO_URL=process.env.MONGO_URL;
 const PORT=process.env.PORT || 3002;
 
@@ -184,5 +211,5 @@ connectMongoDB();
 
 
 app.listen(PORT,()=>{
-    console.log("App Started")
+    console.log("App Started",PORT)
 })
