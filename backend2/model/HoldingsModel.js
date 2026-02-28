@@ -1,8 +1,6 @@
-const {model}=require("mongoose");
-// require a model for creating a collection from mongoose library
-const {HoldingsSchema}=require("../schemas/HoldingsSchema");
-// destructuring perfomed 
+const { model } = require("mongoose");
+const { HoldingsSchema } = require("../schemas/HoldingsSchema");
 
-const HoldingsModel = model("holding",HoldingsSchema);
-// model is used to create / access the collection
-module.exports={HoldingsModel};
+const HoldingsModel = model("holding", HoldingsSchema);
+
+module.exports = { HoldingsModel };
