@@ -177,8 +177,19 @@ http://localhost:3000
 - Live portfolio summary auto-refresh
 
 ---
+<h1>Dashboard</h1>
+<p align="center">
+  <img width="1877" height="972" alt="image" src="https://github.com/user-attachments/assets/16bd012d-b699-4635-9d6d-892a2c98ecbd" />
+  <img width="1812" height="921" alt="image" src="https://github.com/user-attachments/assets/d658d332-8d65-4313-abae-05603a0b7c7e" />
+<img width="1812" height="921" alt="image" src="https://github.com/user-attachments/assets/c3ed98a0-4563-497e-953f-038f23b57ad5" />
 
+</p>
 
+<h1>Landing page</h1>
+<p align="center">
+  <img width="1784" height="904" alt="image" src="https://github.com/user-attachments/assets/32315ac2-f0bd-40ed-bae0-1cfb2cf1cc1f" />
+
+</p>
 
 ---
 
